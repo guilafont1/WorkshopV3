@@ -78,3 +78,32 @@ footer {
     content: 'État : ';
     font-weight: normal;
 }
+
+.btn-login {
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #007bff;
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.btn-login {
+    margin-right: 0; 
+}
+
+header .nav-link {
+    margin-right: 20px; 
+}
