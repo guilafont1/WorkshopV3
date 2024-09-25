@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center" data-aos="fade-up">Catalogue des Matériels</h1>
+        <div class="row mt-4">
+            {% for equipment in equipments %}
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ equipment.name }}</h5>
+                            <p class="card-text">{{ equipment.description }}</p>
+                            <p class="card-text"><strong>Référence :</strong> {{ equipment.reference }}</p>
+                            <p class="card-text">
+                                {% if equipment.available %}
+                                    <span class="badge bg-success">Disponible</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Indisponible</span>
+                                {% endif %}
+                            </p>
+                            <a href="#" class="btn btn-primary">Réserver</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
