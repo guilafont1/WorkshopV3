@@ -2,16 +2,55 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Lébani{% endblock %}</title>
+        <!-- Lien Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Lien AOS pour les animations -->
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header class="bg-dark text-white p-3">
+            <div class="container d-flex justify-content-between">
+                <div class="d-flex align-items-center"> <!-- Aligne le logo et les liens -->
+                    <a href="{{ path('app_home') }}" class="mr-3">
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo" style="height: 50px;"> <!-- Ajustez la hauteur ici -->
+                    </a>
+                    <nav>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ path('app_home') }}">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ path('app_catalogue') }}">Catalogue</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="d-flex align-items-end">
+                    <!-- Lien Connexion avec effet de grossissement des lettres -->
+                    <a href="{{ path('app_home') }}" class="nav-link text-white btn-login">Connexion</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mt-4" data-aos="fade-up">
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer class="bg-dark text-white text-center py-3 mt-4">
+            <p>© 2024 Mon site Symfony</p>
+        </footer>
+
+        <!-- Script Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Script AOS pour les animations -->
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
     </body>
 </html>

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center" data-aos="fade-up">Catalogue des Matériels</h1>
+
+        <!-- Barre de recherche -->
+        <form method="get" action="{{ path('app_catalogue') }}" class="mb-4" id="search-form">
+            <div class="input-group">
+                <input type="text" name="search" value="{{ searchTerm }}" class="form-control" placeholder="Rechercher un équipement..." id="search-input">
+            </div>
+        </form>
+
+        <!-- Conteneur pour afficher les résultats de la recherche -->
+        <div class="row mt-4" id="equipment-list">
+            {% include 'catalogue/_equipment_list.html.twig' %}
+        </div>
+    </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('search-input');
+        const equipmentList = document.getElementById('equipment-list');
+
+        // Ecouter les changements dans la barre de recherche
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value;
+
+            // Effectuer une requête AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `{{ path('app_catalogue') }}?search=${query}`, true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    // Remplacer le contenu de la liste des équipements par les nouveaux résultats
+                    equipmentList.innerHTML = xhr.responseText;
+                }
+            };
+
+            xhr.send();
+        });
+    });
+</script>
+
+{% endblock %}
