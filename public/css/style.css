@@ -1,4 +1,4 @@
-/* Style personnalisé pour l'application */
+/* Style général */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
@@ -14,4 +14,24 @@ header {
 
 footer {
     margin-top: 2rem;
+}
+
+/* Ajouter un effet de survol sur les cartes */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Effet de survol sur le bouton */
+.btn-primary {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }

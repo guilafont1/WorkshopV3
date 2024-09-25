@@ -4,14 +4,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Mon site Symfony{% endblock %}</title>
-        <!-- Ajouter le lien Bootstrap -->
+        <!-- Lien Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Lien AOS pour les animations -->
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         <header class="bg-dark text-white p-3">
             <div class="container">
-                <h1 class="display-4">Notre site Symfony</h1>
+                <h1 class="display-4">Mon site Symfony</h1>
                 <nav>
                     <ul class="nav">
                         <li class="nav-item">
@@ -21,18 +23,23 @@
                 </nav>
             </div>
         </header>
-        
-        <main class="container mt-4">
+
+        <main class="container mt-4" data-aos="fade-up">
             {% block body %}{% endblock %}
         </main>
 
         <footer class="bg-dark text-white text-center py-3 mt-4">
-            <p>Notre site Symfony pour la semaine de WorkShop</p>
+            <p>© 2024 Mon site Symfony</p>
         </footer>
 
-        <!-- Ajouter les scripts Bootstrap -->
+        <!-- Script Bootstrap -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Script AOS pour les animations -->
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
     </body>
 </html>
