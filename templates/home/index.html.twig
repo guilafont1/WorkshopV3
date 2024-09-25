@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Bienvenue sur notre plateforme de réservation !</h1>
+        <p class="lead">Gérez et réservez facilement votre matériel grâce à notre application moderne.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Commencer</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Matériel 1">
+                <div class="card-body">
+                    <h5 class="card-title">Matériel A</h5>
+                    <p class="card-text">Description rapide du matériel.</p>
+                    <a href="#" class="btn btn-primary">Réserver</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Matériel 2">
+                <div class="card-body">
+                    <h5 class="card-title">Matériel B</h5>
+                    <p class="card-text">Description rapide du matériel.</p>
+                    <a href="#" class="btn btn-primary">Réserver</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Matériel 3">
+                <div class="card-body">
+                    <h5 class="card-title">Matériel C</h5>
+                    <p class="card-text">Description rapide du matériel.</p>
+                    <a href="#" class="btn btn-primary">Réserver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
