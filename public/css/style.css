@@ -107,3 +107,8 @@ footer {
 header .nav-link {
     margin-right: 20px; 
 }
+.logo {
+    height: 50px; /* Ajustez la hauteur selon vos besoins */
+    width: auto; /* Cela maintient le ratio de l'image */
+    
+}
