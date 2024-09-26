@@ -25,16 +25,25 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ path('app_catalogue') }}">Catalogue</a>
                             </li>
+                            <!-- Afficher "Mes Réservations" seulement si l'utilisateur est connecté -->
+                            {% if is_granted('ROLE_USER') %}
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{{ path('app_mes_reservations') }}">Mes Réservations</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
                 <div class="d-flex align-items-end">
-                    <!-- Lien Connexion avec effet de grossissement des lettres -->
-                    <a href="{{ path('app_login') }}" class="nav-link text-white btn-login">Connexion</a>
-                </div>
-                <div class="d-flex align-items-end">
-                    <!-- Lien Connexion avec effet de grossissement des lettres -->
-                    <a href="{{ path('app_register') }}" class="nav-link text-white btn-login">S'enregistrer</a>
+                    <!-- Vérification si l'utilisateur est connecté ou non -->
+                    {% if app.user %}
+                        <!-- Si connecté, afficher le lien de déconnexion -->
+                        <a href="{{ path('app_logout') }}" class="nav-link text-white btn-login">Se déconnecter</a>
+                    {% else %}
+                        <!-- Si non connecté, afficher les liens de connexion et d'enregistrement -->
+                        <a href="{{ path('app_login') }}" class="nav-link text-white btn-login">Connexion</a>
+                        <a href="{{ path('app_register') }}" class="nav-link text-white btn-login">S'enregistrer</a>
+                    {% endif %}
                 </div>
             </div>
         </header>
