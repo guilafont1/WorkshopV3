@@ -36,12 +36,17 @@ class AppFixtures extends Fixture
             $stocks[] = $stock;
         }
 
-        $userRegular = new User();
-        $userRegular->setEmail($faker->name());
-        $userRegular->setEmail('testRegularUser@gmail.com');
-        $userRegular->setPassword($this->hasher->hashPassword($userRegular, 'test'));
-        $manager->persist($userRegular);
-        $users[] = $userRegular;
+        $users = [];
+        for ($i = 0; $i < 10; $i++) {
+            $userRegular = new User();
+            $userRegular->setEmail($faker->name());
+            $userRegular->setPassword($this->hasher->hashPassword($userRegular, 'test'));
+            $manager->persist($userRegular);
+            $users[] = $userRegular;
+        }
+
+
+
 
         $equipments = [];
         for ($i = 0; $i < 10; $i++) {

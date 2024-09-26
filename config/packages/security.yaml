@@ -32,11 +32,11 @@ security:
 
   # Contrôle d'accès global (en dehors des firewalls)
   access_control:
+    - { path: ^/admin, roles: ROLE_ADMIN }=======
     # Restreindre l'accès à certaines pages seulement pour les utilisateurs connectés
     # Restreindre l'accès à "Mes Réservations" aux utilisateurs ayant le rôle "ROLE_USER"
     - { path: ^/mes_reservations, roles: ROLE_USER }
     # Restreindre l'accès au profil utilisateur aux utilisateurs connectés
-    - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
   security:
