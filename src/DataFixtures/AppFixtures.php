@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
         $users = [];
         for ($i = 0; $i < 10; $i++) {
             $userRegular = new User();
-            $userRegular->setEmail($faker->name());
+            $userRegular->setEmail($faker->email());
             $userRegular->setPassword($this->hasher->hashPassword($userRegular, 'test'));
             $manager->persist($userRegular);
             $users[] = $userRegular;
@@ -65,8 +65,8 @@ class AppFixtures extends Fixture
         $loans = [];
         for ($i = 0; $i < 10; $i++) {
             $loan = new Loan();
-            $loan->setUserId($faker->randomElement($users));
-            $loan->setEquipmentId($faker->randomElement($equipments));
+            $loan->setUser($faker->randomElement($users));
+            $loan->setEquipment($faker->randomElement($equipments));
             $loan->setStartTime($faker->dateTime());
             $loan->setEndTime($faker->dateTime());
             $loan->setStatus($faker->word());
