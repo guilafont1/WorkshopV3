@@ -19,31 +19,30 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            const equipmentList = document.getElementById('equipment-list');
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('search-input');
-        const equipmentList = document.getElementById('equipment-list');
+            // Ecouter les changements dans la barre de recherche
+            searchInput.addEventListener('input', function() {
+                const query = searchInput.value;
 
-        // Ecouter les changements dans la barre de recherche
-        searchInput.addEventListener('input', function() {
-            const query = searchInput.value;
+                // Effectuer une requête AJAX
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `{{ path('app_catalogue') }}?search=${query}`, true);
+                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-            // Effectuer une requête AJAX
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', `{{ path('app_catalogue') }}?search=${query}`, true);
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        // Remplacer le contenu de la liste des équipements par les nouveaux résultats
+                        equipmentList.innerHTML = xhr.responseText;
+                    }
+                };
 
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                    // Remplacer le contenu de la liste des équipements par les nouveaux résultats
-                    equipmentList.innerHTML = xhr.responseText;
-                }
-            };
-
-            xhr.send();
+                xhr.send();
+            });
         });
-    });
-</script>
+    </script>
 
 {% endblock %}
