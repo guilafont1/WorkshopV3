@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Réservations{% endblock %}
+
+{% block body %}
+    <h1>Mes Réservations</h1>
+
+    {% if loans is empty %}
+        <p>Vous n'avez aucune réservation pour le moment.</p>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Équipement</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for loan in loans %}
+                    <tr>
+                        <td>{{ loan.getEquipmentId().getName() }}</td> <!-- Assurez-vous que la méthode `getName()` existe dans l'entité `Equipment` -->
+                        <td>{{ loan.getStartTime()|date('d/m/Y H:i') }}</td>
+                        <td>{{ loan.getEndTime()|date('d/m/Y H:i') }}</td>
+                        <td>{{ loan.isStatus() ? 'Active' : 'Terminée' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
