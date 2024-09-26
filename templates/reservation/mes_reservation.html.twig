@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Réservations{% endblock %}
+
+{% block body %}
+    <h1>Mes Réservations</h1>
+
+    <p>Voici vos réservations :</p>
+
+    {# Si vous avez des réservations, vous pouvez les afficher ici #}
+    {# {% for reservation in reservations %} #}
+    {#    <p>{{ reservation.nom }} - {{ reservation.date }}</p> #}
+    {# {% else %} #}
+    <p>Vous n'avez aucune réservation pour le moment.</p>
+    {# {% endfor %} #}
+{% endblock %}
