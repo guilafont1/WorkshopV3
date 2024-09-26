@@ -19,9 +19,8 @@ class StateCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('description')->setLabel('Liste des états possibles'),
-            TextEditorField::new('description'),
+            IdField::new('id')->setDisabled(),
+            TextField::new('description')->setLabel("État de l'équipement"),
         ];
     }
 }
