@@ -4,26 +4,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Lébani{% endblock %}</title>
-        <!-- Lien Bootstrap -->
         
         
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-        <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <!-- Lien AOS pour les animations -->
         <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         <header class="bg-dark text-white p-3">
             <div class="container d-flex justify-content-between">
-                <div class="d-flex align-items-center"> <!-- Aligne le logo et les liens -->
+                <div class="d-flex align-items-center"> 
                     <nav>
                         <ul class="nav">
                             <li class="nav-item">
@@ -50,7 +46,6 @@
                 </div>
                 {% if app.user and is_granted('ROLE_ADMIN') %}
                     <div class="d-flex align-items-end">
-                        <!-- Lien Connexion avec effet de grossissement des lettres -->
                         <a href="{{ path('admin') }}" class="nav-link text-white btn-login">Administration</a>
                     </div>
                 {% endif %}

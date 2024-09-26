@@ -16,25 +16,22 @@ class Loan
 
     #[ORM\ManyToOne(inversedBy: 'loans')]
     #[ORM\JoinColumn(name: 'user_id_id', referencedColumnName: 'id', nullable: false)]
-    private ?User $user = null; // L'utilisateur associé à ce prêt
-
+    private ?User $user = null;
     #[ORM\ManyToOne(inversedBy: 'loans')]
     #[ORM\JoinColumn(name: 'equipment_id_id', referencedColumnName: 'id', nullable: false)]
-    private ?Equipment $equipment = null; // L'équipement associé à ce prêt
+    private ?Equipment $equipment = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $start_time = null; // Date de début
-
+    private ?\DateTimeInterface $start_time = null;
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $end_time = null; // Date de fin
+    private ?\DateTimeInterface $end_time = null;
 
     #[ORM\Column]
-    private ?bool $status = null; // Statut du prêt (actif ou non)
+    private ?bool $status = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $created_at = null; // Date de création du prêt
+    private ?\DateTimeInterface $created_at = null;
 
-    // Getters et setters
 
     public function getId(): ?int
     {
@@ -43,67 +40,67 @@ class Loan
 
     public function getUser(): ?User
     {
-        return $this->user; // Retourne l'utilisateur
+        return $this->user;
     }
 
     public function setUser(?User $user): static
     {
-        $this->user = $user; // Définit l'utilisateur
+        $this->user = $user;
         return $this;
     }
 
     public function getEquipment(): ?Equipment
     {
-        return $this->equipment; // Retourne l'équipement
+        return $this->equipment;
     }
 
     public function setEquipment(?Equipment $equipment): static
     {
-        $this->equipment = $equipment; // Définit l'équipement
+        $this->equipment = $equipment;
         return $this;
     }
 
     public function getStartTime(): ?\DateTimeInterface
     {
-        return $this->start_time; // Retourne la date de début
+        return $this->start_time;
     }
 
     public function setStartTime(\DateTimeInterface $start_time): static
     {
-        $this->start_time = $start_time; // Définit la date de début
+        $this->start_time = $start_time;
         return $this;
     }
 
     public function getEndTime(): ?\DateTimeInterface
     {
-        return $this->end_time; // Retourne la date de fin
+        return $this->end_time;
     }
 
     public function setEndTime(\DateTimeInterface $end_time): static
     {
-        $this->end_time = $end_time; // Définit la date de fin
+        $this->end_time = $end_time;
         return $this;
     }
 
     public function isStatus(): ?bool
     {
-        return $this->status; // Retourne le statut
+        return $this->status;
     }
 
     public function setStatus(bool $status): static
     {
-        $this->status = $status; // Définit le statut
+        $this->status = $status;
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at; // Retourne la date de création
+        return $this->created_at;
     }
 
     public function setCreatedAt(\DateTimeInterface $created_at): static
     {
-        $this->created_at = $created_at; // Définit la date de création
+        $this->created_at = $created_at;
         return $this;
     }
 }
