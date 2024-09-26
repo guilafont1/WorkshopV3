@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Lébani{% endblock %}</title>
-    <!-- Lien Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Lien AOS pour les animations -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
-    <header class="bg-dark text-white p-3">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Lébani{% endblock %}</title>
+        <!-- Lien Bootstrap -->
+        
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Lien AOS pour les animations -->
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    </head>
+    <body>
+        <header class="bg-dark text-white p-3">
+            <div class="container d-flex justify-content-between">
+                <div class="d-flex align-items-center"> <!-- Aligne le logo et les liens -->
+                    <a href="{{ path('app_home') }}" class="mr-3">
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo" style="height: 50px;"> <!-- Ajustez la hauteur ici -->
+                    </a>
                     <nav>
                         <ul class="nav">
                             <li class="nav-item">
@@ -46,11 +58,19 @@
             </div>
         </div>
     </header>
-
+        <main class="container mt-4" data-aos="fade-up">
+                    {% for label, messages in app.flashes %}
+                <div class="alert alert-{{ label }}">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </main>
     <main class="container mt-4" data-aos="fade-up">
         {% block body %}{% endblock %}
     </main>
-
     <footer class="bg-dark text-white text-center py-2 mt-3" style="position: auto;">
         <p>© 2024 Notre site Symfony pour la semaine de WorkShop</p>
     </footer>

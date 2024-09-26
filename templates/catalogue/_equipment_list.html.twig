@@ -10,15 +10,32 @@
                     <p class="card-text"><strong>Référence :</strong> {{ equipment.reference }}</p>
                     <p class="card-text">
                         {% if equipment.available %}
-                            <span class="badge bg-success">Disponible</span>
+                            <a href="{{ path('app_reserve', {id: equipment.id}) }}" class="btn btn-primary">Réserver</a>
                         {% else %}
-                            <span class="badge bg-danger">Indisponible</span>
+                            <button class="btn btn-danger" onclick="alert('Cet équipement est actuellement indisponible.')">Indisponible</button>
                         {% endif %}
                     </p>
-                    <a href="#" class="btn btn-primary">Réserver</a>
                 </div>
             </div>
         </div>
+
+        <!-- Modal pour indisponibilité -->
+        <div class="modal fade" id="indisponibleModal{{ equipment.id }}" tabindex="-1" aria-labelledby="indisponibleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="indisponibleModalLabel">Indisponibilité</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        L'équipement <strong>{{ equipment.name }}</strong> est actuellement indisponible. Veuillez essayer plus tard.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     {% endfor %}
 {% endif %}
-    
