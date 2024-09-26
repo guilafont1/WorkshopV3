@@ -3,8 +3,50 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <div class="jumbotron text-center" data-aos="zoom-in">
-        <h1 class="display-4">Bienvenue sur notre plateforme de réservation !</h1>
-        <p class="lead">Gérez et réservez facilement votre matériel grâce à notre application moderne.</p>
+    <div class="jumbotron text-center bg-dark" style="padding: 50px 20px; position: relative; overflow: hidden;">
+        <div class="overlay"></div>
+        
+        <div class="container d-flex align-items-center justify-content-center">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo" style="width: 200px; height: auto; margin-right: 30px;">
+            <div>
+                <blanc> <h1 class="display-4 text-light">Bienvenue sur notre plateforme de réservation !</h1></blanc>
+                <blanc> <h1 class="lead text-light">Gérez et réservez facilement votre matériel grâce à notre application moderne.</h1></blanc>
+            </div>
+        </div>
+
+        <hr class="my-4 bg-light" style="height: 2px;">
+    </div>
+
+    <div class="container text-center mt-5">
+        <h2 class="mb-4 text-dark">À propos de notre service</h2>
+        <p class="text-dark">Notre plateforme vous permet de trouver et de réserver rapidement l'équipement dont vous avez besoin, quand vous en avez besoin.</p>
+        <p class="text-dark">Nous nous engageons à offrir un service de qualité et à répondre à toutes vos demandes.</p>
+
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card border-dark mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-dark">Équipement de Qualité</h5>
+                        <p class="card-text">Nous proposons une large gamme d'équipements disponibles à la location, adaptés à tous vos besoins.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-dark mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-dark">Support Client</h5>
+                        <p class="card-text">Notre équipe est là pour vous aider, avec un support rapide et efficace à chaque étape.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-dark mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-dark">Rapidité de Service</h5>
+                        <p class="card-text">Profitez d'une réservation instantanée et d'une assistance rapide, tout en bénéficiant d'un service de qualité.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
