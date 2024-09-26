@@ -22,8 +22,8 @@ class Equipment
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    private ?bool $available = null;
+    #[ORM\Column(type: 'boolean')]
+    private bool $available = true; // Par défaut, l'équipement est disponible
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created_at = null;
@@ -48,6 +48,7 @@ class Equipment
     public function __construct()
     {
         $this->loans = new ArrayCollection();
+        $this->created_at = new \DateTime(); // Initialise created_at par défaut
     }
 
     public function getId(): ?int
@@ -63,7 +64,6 @@ class Equipment
     public function setName(string $name): static
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -75,11 +75,10 @@ class Equipment
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
         return $this;
     }
 
-    public function isAvailable(): ?bool
+    public function isAvailable(): bool
     {
         return $this->available;
     }
@@ -87,7 +86,6 @@ class Equipment
     public function setAvailable(bool $available): static
     {
         $this->available = $available;
-
         return $this;
     }
 
@@ -99,7 +97,6 @@ class Equipment
     public function setCreatedAt(\DateTimeInterface $created_at): static
     {
         $this->created_at = $created_at;
-
         return $this;
     }
 
@@ -111,7 +108,6 @@ class Equipment
     public function setReference(string $reference): static
     {
         $this->reference = $reference;
-
         return $this;
     }
 
@@ -123,7 +119,6 @@ class Equipment
     public function setStateId(?State $state_id): static
     {
         $this->state_id = $state_id;
-
         return $this;
     }
 
@@ -135,7 +130,6 @@ class Equipment
     public function setTypeId(?Stock $type_id): static
     {
         $this->type_id = $type_id;
-
         return $this;
     }
 

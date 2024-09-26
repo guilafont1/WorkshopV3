@@ -4,29 +4,34 @@
 
 {% block body %}
     <h1>Mes Réservations</h1>
-
-    {% if loans is empty %}
-        <p>Vous n'avez aucune réservation pour le moment.</p>
-    {% else %}
-        <table class="table">
-            <thead>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Équipement</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for loan in loans %}
                 <tr>
-                    <th>Équipement</th>
-                    <th>Date de début</th>
-                    <th>Date de fin</th>
-                    <th>Statut</th>
+                    <td>{{ loan.equipment.name }}</td>
+                    <td>{{ loan.startTime|date('d/m/Y H:i') }}</td>
+                    <td>{{ loan.EndTime|date('d/m/Y H:i') }}</td>
+                    <td>
+                        {% if loan.status %}
+                            <span class="badge bg-success">Actif</span>
+                        {% else %}
+                            <span class="badge bg-danger">Terminé</span>
+                        {% endif %}
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for loan in loans %}
-                    <tr>
-                        <td>{{ loan.getEquipmentId().getName() }}</td> <!-- Assurez-vous que la méthode `getName()` existe dans l'entité `Equipment` -->
-                        <td>{{ loan.getStartTime()|date('d/m/Y H:i') }}</td>
-                        <td>{{ loan.getEndTime()|date('d/m/Y H:i') }}</td>
-                        <td>{{ loan.isStatus() ? 'Active' : 'Terminée' }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center">Aucune réservation trouvée.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
