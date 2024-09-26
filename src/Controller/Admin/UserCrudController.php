@@ -5,9 +5,9 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -25,6 +25,7 @@ class UserCrudController extends AbstractCrudController
         $roles = ['ROLE_ADMIN', 'ROLE_USER'];
         return [
             IdField::new('id')->setDisabled(),
+            TextField::new('email')->setLabel("Adresse email"),
             ChoiceField::new('roles')->allowMultipleChoices()
                 ->setChoices(array_combine($roles, $roles))->setColumns(12)
                 ->allowMultipleChoices(true)->renderExpanded(),
@@ -41,6 +42,7 @@ class UserCrudController extends AbstractCrudController
                 ])
                 ->setRequired($pageName === Crud::PAGE_NEW)
                 ->onlyOnForms(),
+            AssociationField::new('loans')->setLabel("Total des emprunts"),
         ];
     }
 }

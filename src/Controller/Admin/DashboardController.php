@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Equipment;
+use App\Entity\Loan;
 use App\Entity\State;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -47,5 +48,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Équipements', 'fas fa-list', Equipment::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('États', 'fas fa-list', State::class);
+        yield MenuItem::linkToCrud('Liste des emprunts', 'fas fa-list', Loan::class);
     }
 }
