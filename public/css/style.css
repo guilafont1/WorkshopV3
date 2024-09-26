@@ -5,7 +5,7 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
+    color: white;
 }
 
 header {
@@ -111,4 +111,56 @@ header .nav-link {
     height: 50px; /* Ajustez la hauteur selon vos besoins */
     width: auto; /* Cela maintient le ratio de l'image */
     
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Prend tout l'espace restant entre l'en-tête et le pied de page */
+}
+
+footer {
+    background-color: #333; /* Couleur de fond du pied de page */
+    color: white; /* Couleur du texte */
+}
+
+.jumbotron {
+    background: #343a40; /* Couleur sombre */
+    position: relative;
+    overflow: hidden;
+}
+
+.jumbotron .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Légère transparence pour l'effet sombre */
+}
+
+.logo {
+    width: 150px; /* Ajustez la taille du logo */
+    height: auto;
+    margin-bottom: 30px; /* Espace en dessous du logo */
+}
+
+.btn {
+    margin: 0 10px; /* Espace entre les boutons */
+}
+
+.card {
+    border: 1px solid #343a40; /* Bord sombre pour les cartes */
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.blanc{
+    color: white;
 }

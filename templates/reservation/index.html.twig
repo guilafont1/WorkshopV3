@@ -3,30 +3,32 @@
 {% block title %}Mes Réservations{% endblock %}
 
 {% block body %}
-    <h1>Mes Réservations</h1>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Mes Réservations</h1>
 
-    {% if loans is empty %}
-        <p>Vous n'avez aucune réservation pour le moment.</p>
-    {% else %}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Équipement</th>
-                    <th>Date de début</th>
-                    <th>Date de fin</th>
-                    <th>Statut</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for loan in loans %}
+        {% if loans is empty %}
+            <p class="text-center">Vous n'avez aucune réservation pour le moment.</p>
+        {% else %}
+            <table class="table table-hover table-bordered shadow-lg">
+                <thead class="thead-dark">
                     <tr>
-                        <td>{{ loan.getEquipmentId().getName() }}</td> <!-- Assurez-vous que la méthode `getName()` existe dans l'entité `Equipment` -->
-                        <td>{{ loan.getStartTime()|date('d/m/Y H:i') }}</td>
-                        <td>{{ loan.getEndTime()|date('d/m/Y H:i') }}</td>
-                        <td>{{ loan.isStatus() ? 'Active' : 'Terminée' }}</td>
+                        <th>Équipement</th>
+                        <th>Date de début</th>
+                        <th>Date de fin</th>
+                        <th>Statut</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+                </thead>
+                <tbody>
+                    {% for loan in loans %}
+                        <tr class="{% if not loan.isStatus() %}table-danger{% endif %}">
+                            <td>{{ loan.getEquipmentId().getName() }}</td> 
+                            <td>{{ loan.getStartTime()|date('d/m/Y H:i') }}</td>
+                            <td>{{ loan.getEndTime()|date('d/m/Y H:i') }}</td>
+                            <td>{{ loan.isStatus() ? 'En cours' : 'Terminée' }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
 {% endblock %}

@@ -1,76 +1,64 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Lébani{% endblock %}</title>
-        <!-- Lien Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <!-- Lien AOS pour les animations -->
-        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    </head>
-    <body>
-        <header class="bg-dark text-white p-3">
-            <div class="container">
-                <!-- Utilisation de flex pour aligner les éléments sur une seule ligne -->
-                <div class="d-flex justify-content-between align-items-center">
-                    <!-- Logo et Navigation (Accueil, Catalogue) à gauche -->
-                    <div class="d-flex align-items-center">
-                        <!-- Logo -->
-                        <a href="{{ path('app_home') }}" class="mr-3">
-                            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo" style="height: 50px;">
-                        </a>
-                        <!-- Navigation pour Accueil et Catalogue -->
-                        <nav>
-                            <ul class="nav">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Lébani{% endblock %}</title>
+    <!-- Lien Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Lien AOS pour les animations -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+    <header class="bg-dark text-white p-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <nav>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ path('app_home') }}">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ path('app_catalogue') }}">Catalogue</a>
+                            </li>
+                            {% if is_granted('ROLE_USER') %}
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ path('app_home') }}">Accueil</a>
+                                    <a class="nav-link text-white" href="{{ path('app_mes_reservations') }}">Mes Réservations</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ path('app_catalogue') }}">Catalogue</a>
-                                </li>
-                                <!-- Afficher "Mes Réservations" seulement si l'utilisateur est connecté -->
-                                {% if is_granted('ROLE_USER') %}
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white" href="{{ path('app_mes_reservations') }}">Mes Réservations</a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    </div>
-
-                    <!-- Connexion / Déconnexion / Enregistrement à droite -->
-                    <div class="d-flex align-items-center">
-                        {% if app.user %}
-                            <!-- Lien de déconnexion si connecté -->
-                            <a href="{{ path('app_logout') }}" class="nav-link text-white">Se déconnecter</a>
-                        {% else %}
-                            <!-- Liens de connexion et enregistrement si non connecté -->
-                            <a href="{{ path('app_login') }}" class="nav-link text-white">Connexion</a>
-                            <a href="{{ path('app_register') }}" class="nav-link text-white">S'enregistrer</a>
-                        {% endif %}
-                    </div>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+                <div class="d-flex align-items-center">
+                    {% if app.user %}
+                        <a href="{{ path('app_logout') }}" class="nav-link text-white">Se déconnecter</a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="nav-link text-white">Connexion</a>
+                        <a href="{{ path('app_register') }}" class="nav-link text-white">S'enregistrer</a>
+                    {% endif %}
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main class="container mt-4" data-aos="fade-up">
-            {% block body %}{% endblock %}
-        </main>
+    <main class="container mt-4" data-aos="fade-up">
+        {% block body %}{% endblock %}
+    </main>
 
-        <footer class="bg-dark text-white text-center py-3 mt-4">
-            <p>© 2024 Mon site Symfony</p>
-        </footer>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>© 2024 Notre site Symfony pour la semaine de WorkShop</p>
+    </footer>
 
-        <!-- Script Bootstrap -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <!-- Script AOS pour les animations -->
-        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
-    </body>
+    <!-- Script Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script AOS pour les animations -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
 </html>
