@@ -21,7 +21,7 @@
                 <tbody>
                     {% for loan in loans %}
                         <tr class="{% if not loan.isStatus() %}table-danger{% endif %}">
-                            <td>{{ loan.getEquipmentId().getName() }}</td> 
+                            <td>{{ loan.getEquipment().getName() }}</td> 
                             <td>{{ loan.getStartTime()|date('d/m/Y H:i') }}</td>
                             <td>{{ loan.getEndTime()|date('d/m/Y H:i') }}</td>
                             <td>{{ loan.isStatus() ? 'En cours' : 'Terminée' }}</td>
