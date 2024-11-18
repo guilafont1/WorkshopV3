@@ -1,0 +1,93 @@
+
+## Commandes Générales
+
+### Vérifier l'installation et les prérequis :
+symfony check:requirements
+
+### Lancer le serveur local :
+symfony server:start
+
+### Arrêter le serveur local :
+symfony server:stop
+
+### Afficher les informations sur le projet :
+symfony info
+
+## Commandes Composer intégrées
+
+### Installer les dépendances :
+composer install
+
+### Mettre à jour les dépendances :
+composer update
+
+### Ajouter une dépendance :
+composer require nom_du_package
+
+### Supprimer une dépendance :
+composer remove nom_du_package
+
+## Commandes Doctrine (Base de données)
+
+### Créer une base de données :
+php bin/console doctrine:database:create
+
+### Supprimer une base de données :
+php bin/console doctrine:database:drop --force
+
+### Générer des migrations :
+php bin/console make:migration
+
+### Appliquer des migrations :
+php bin/console doctrine:migrations:migrate
+
+### Générer une entité :
+php bin/console make:entity
+
+### Mettre à jour le schéma de la base de données :
+php bin/console doctrine:schema:update --force
+
+## Commandes pour Générer du Code
+
+### Créer un contrôleur :
+php bin/console make:controller NomController
+
+### Créer une commande :
+php bin/console make:command NomDeVotreCommande
+
+### Créer un formulaire :
+php bin/console make:form NomDuFormulaire
+
+### Créer un service :
+php bin/console make:service NomDuService
+
+## Commandes de Debug
+
+### Afficher les routes disponibles :
+php bin/console debug:router
+
+### Déboguer un service :
+php bin/console debug:container NomDuService
+
+### Déboguer un événement :
+php bin/console debug:event-dispatcher
+
+### Déboguer l’autowiring des services :
+php bin/console debug:autowiring
+
+## Commandes Utilitaires
+
+### Effacer le cache :
+php bin/console cache:clear
+
+### Mettre en production (optimisation du cache) :
+php bin/console cache:warmup
+
+### Tester un email dans Symfony Mailer :
+php bin/console messenger:consume async
+
+## Liste complète des commandes :
+php bin/console list
+
+## Aide pour une commande spécifique :
+php bin/console nom:de:commande --help
